@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <meta name="description" content="<%= description %>">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <div id="background-container">
+        <video id="background-video" autoplay muted loop playsinline>
+            <source src="/assets/background/fnaf6_mute.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div id="background-overlay"></div>
+    </div>
+
+    <div id="content-container">
+        <!-- Transcript removed - audio only -->
+    </div>
+
+    <!-- Terminal Interface -->
+    <div id="terminal-screen">
+        <div id="terminal-container">
+            <div id="terminal-header">
+                <span class="terminal-title">FNAF6 System Terminal</span>
+                <span class="terminal-status" id="connection-status">Initializing...</span>
+            </div>
+            <div id="terminal-output"></div>
+            <div id="terminal-input-line">
+                <span class="terminal-prompt">user@fnaf6:~$ </span>
+                <input type="text" id="terminal-input" autocomplete="off" spellcheck="false">
+                <span class="terminal-cursor">_</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scott Thank You Screen -->
+    <div id="scott-screen">
+        <div id="scott-content">
+            <h1 id="scott-message">Thank you Scott for everything</h1>
+            <img id="scott-image" src="/assets/background/thanksscott.png" alt="Thank you Scott">
+            <div id="scott-back-btn">Press any key to return to terminal</div>
+        </div>
+    </div>
+
+    <!-- Credits Screen -->
+    <div id="credits-screen">
+        <div id="credits-content">
+            <div id="credits-message">This site was built with love and care by me</div>
+            <div id="credits-tiktok">
+                <a href="https://www.tiktok.com/@dudustane?_t=ZT-8ziSGIJmIpb&_r=1" target="_blank" id="tiktok-link">
+                    @dudustane
+                </a>
+            </div>
+            <div id="credits-subtitle">Check out my TikTok for more content!</div>
+        </div>
+    </div>
+
+    <div id="loading-screen">
+        <div class="loading-text">Connection Terminated</div>
+        <div class="loading-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <audio id="main-audio" preload="auto">
+        <source src="/assets/audio/Freddy Fazbear's Pizzeria Simulator_ Ending Monologue - No Music or Sound Effects.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <audio id="credits-audio" preload="auto">
+        <source src="/assets/audio/ElevenLabs_Text_to_Speech_audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

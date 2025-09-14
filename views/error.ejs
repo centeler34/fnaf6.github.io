@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        .error-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 100;
+        }
+
+        .error-code {
+            font-size: 4rem;
+            color: #8B0000;
+            font-family: 'Creepster', cursive;
+            text-shadow: 0 0 20px rgba(139, 0, 0, 0.8);
+            margin-bottom: 1rem;
+        }
+
+        .error-message {
+            font-size: 1.2rem;
+            color: #fff;
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 2rem;
+        }
+
+        .back-link {
+            color: #8B0000;
+            text-decoration: none;
+            font-family: 'Orbitron', monospace;
+            border: 1px solid #8B0000;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .back-link:hover {
+            background: #8B0000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="background-container">
+        <div id="background-image"></div>
+        <div id="background-overlay"></div>
+    </div>
+
+    <div class="error-container">
+        <div class="error-code">500</div>
+        <div class="error-message"><%= message %></div>
+        <a href="/" class="back-link">Return to Safety</a>
+    </div>
+</body>
+</html>

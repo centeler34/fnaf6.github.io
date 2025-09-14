@@ -1,0 +1,464 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Orbitron:wght@400;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', monospace;
+    background: #000;
+    color: #fff;
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+}
+
+/* Background Container */
+#background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.3) saturate(1.2);
+    transition: opacity 2s ease-in-out;
+}
+
+#background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        rgba(139, 0, 0, 0.1) 0%,
+        rgba(0, 0, 0, 0.4) 25%,
+        rgba(0, 0, 0, 0.6) 50%,
+        rgba(139, 0, 0, 0.1) 75%,
+        rgba(0, 0, 0, 0.4) 100%
+    );
+    animation: overlayFlicker 8s ease-in-out infinite;
+}
+
+@keyframes overlayFlicker {
+    0%, 100% { opacity: 0.8; }
+    25% { opacity: 0.6; }
+    50% { opacity: 0.9; }
+    75% { opacity: 0.5; }
+}
+
+/* Content Container */
+#content-container {
+    position: relative;
+    z-index: 10;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Loading Screen */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: opacity 2s ease-out;
+}
+
+#loading-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-text {
+    font-family: 'Creepster', cursive;
+    font-size: clamp(2rem, 6vw, 4rem);
+    color: #8B0000;
+    text-shadow:
+        0 0 20px rgba(139, 0, 0, 0.8),
+        0 0 40px rgba(139, 0, 0, 0.4);
+    animation: creepyGlow 2s ease-in-out infinite alternate;
+    margin-bottom: 2rem;
+}
+
+@keyframes creepyGlow {
+    from {
+        text-shadow:
+            0 0 20px rgba(139, 0, 0, 0.8),
+            0 0 40px rgba(139, 0, 0, 0.4);
+    }
+    to {
+        text-shadow:
+            0 0 30px rgba(139, 0, 0, 1),
+            0 0 60px rgba(139, 0, 0, 0.6),
+            0 0 80px rgba(139, 0, 0, 0.3);
+    }
+}
+
+.loading-dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.loading-dots span {
+    width: 12px;
+    height: 12px;
+    background: #8B0000;
+    border-radius: 50%;
+    animation: loadingBounce 1.4s infinite ease-in-out both;
+    box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+}
+
+.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+.loading-dots span:nth-child(3) { animation-delay: 0s; }
+
+@keyframes loadingBounce {
+    0%, 80%, 100% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .loading-text {
+        font-size: clamp(1.5rem, 8vw, 3rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .loading-text {
+        font-size: clamp(1.2rem, 7vw, 2.5rem);
+    }
+}
+
+/* Special Effects */
+@keyframes staticFlicker {
+    0% { opacity: 1; }
+    98% { opacity: 1; }
+    99% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
+.glitch-effect {
+    animation: staticFlicker 0.15s infinite linear;
+}
+
+/* Transcript styling removed - audio only mode */
+
+/* Terminal Interface Styling */
+#terminal-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', monospace;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+#terminal-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#terminal-container {
+    width: 90%;
+    max-width: 800px;
+    height: 70%;
+    background: #000;
+    border: 2px solid #00ff00;
+    border-radius: 8px;
+    padding: 20px;
+    color: #00ff00;
+    overflow: hidden;
+    position: relative;
+}
+
+#terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #00ff00;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.terminal-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.terminal-status {
+    font-size: 0.9rem;
+    color: #ffff00;
+}
+
+.terminal-status.connected {
+    color: #00ff00;
+}
+
+#terminal-output {
+    height: calc(100% - 100px);
+    overflow-y: auto;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.terminal-line {
+    margin: 5px 0;
+    white-space: pre-wrap;
+}
+
+.terminal-line.error {
+    color: #ff4444;
+}
+
+.terminal-line.success {
+    color: #44ff44;
+}
+
+.terminal-line.warning {
+    color: #ffaa00;
+}
+
+#terminal-input-line {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.terminal-prompt {
+    color: #00ff00;
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+#terminal-input {
+    background: transparent;
+    border: none;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    outline: none;
+    flex: 1;
+    caret-color: transparent;
+}
+
+.terminal-cursor {
+    color: #00ff00;
+    animation: blink 1s infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Scott Thank You Screen */
+#scott-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    z-index: 1001;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#scott-screen.active {
+    display: flex;
+}
+
+#scott-content {
+    text-align: center;
+    color: #fff;
+    max-width: 80%;
+}
+
+#scott-message {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 2rem;
+    color: #ffaa00;
+    text-shadow: 0 0 20px rgba(255, 170, 0, 0.5);
+    font-family: 'Orbitron', monospace;
+}
+
+#scott-image {
+    max-width: 100%;
+    max-height: 60vh;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2rem;
+}
+
+#scott-back-btn {
+    font-size: 1.2rem;
+    color: #888;
+    font-family: 'Orbitron', monospace;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+/* Credits Screen */
+#credits-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    z-index: 1002;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#credits-screen.active {
+    display: flex;
+}
+
+#credits-content {
+    text-align: center;
+    color: #fff;
+    max-width: 80%;
+    animation: fadeInUp 2s ease-out;
+}
+
+#credits-message {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    margin-bottom: 2rem;
+    color: #ffffff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    font-family: 'Orbitron', monospace;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+#credits-tiktok {
+    margin-bottom: 1rem;
+}
+
+#tiktok-link {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    color: #ff0050;
+    text-decoration: none;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    text-shadow: 0 0 15px rgba(255, 0, 80, 0.5);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+#tiktok-link:hover {
+    color: #ff3070;
+    text-shadow: 0 0 25px rgba(255, 0, 80, 0.8);
+    transform: scale(1.05);
+}
+
+#credits-subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: #cccccc;
+    font-family: 'Orbitron', monospace;
+    margin-top: 1rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile adjustments for terminal */
+@media (max-width: 768px) {
+    #terminal-container {
+        width: 95%;
+        height: 80%;
+        padding: 15px;
+    }
+
+    .terminal-title {
+        font-size: 0.9rem;
+    }
+
+    #terminal-input {
+        font-size: 0.9rem;
+    }
+
+    #scott-message {
+        font-size: clamp(1.5rem, 6vw, 2.5rem);
+    }
+}
+
+@media (max-width: 480px) {
+    #terminal-container {
+        width: 98%;
+        height: 85%;
+        padding: 10px;
+    }
+
+    .terminal-title {
+        font-size: 0.8rem;
+    }
+
+    #scott-message {
+        font-size: clamp(1.2rem, 7vw, 2rem);
+    }
+}
+
+/* Audio Control Styles (hidden by default) */
+#main-audio {
+    display: none;
+}
