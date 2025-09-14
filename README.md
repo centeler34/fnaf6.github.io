@@ -4,12 +4,12 @@ A Node.js web application tribute to the FNAF 6 ending with synchronized audio a
 
 ## Features
 
-- 🎭 **Atmospheric Design**: Dark, eerie FNAF 6 theme with creepy fonts and effects
-- 🔊 **Synchronized Audio**: Complete Henry monologue with perfectly timed subtitles
-- 📱 **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
-- ⚡ **Node.js Backend**: Express.js server with EJS templating
-- 🎨 **Visual Effects**: Loading screens, glitch effects, and atmospheric animations
-- 🔧 **Error Handling**: Custom 404 and 500 error pages with FNAF theming
+-  **Atmospheric Design**: Dark, eerie FNAF 6 theme with creepy fonts and effects
+-  **Synchronized Audio**: Complete Henry monologue with perfectly timed subtitles
+-  **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+-  **Node.js Backend**: Express.js server with EJS templating
+-  **Visual Effects**: Loading screens, glitch effects, and atmospheric animations
+-  **Error Handling**: Custom 404 and 500 error pages with FNAF theming
 
 ## Installation
 
@@ -93,4 +93,4 @@ MIT License - see LICENSE file for details.
 
 ---
 
-**Connection Terminated** 🎭
+**Connection Terminated** 
